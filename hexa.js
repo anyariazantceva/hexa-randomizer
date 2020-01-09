@@ -57,7 +57,7 @@ window.addEventListener('load', () => {
         if ( activeInput <= 0) {
             console.log(activeInput);
             alert('You should enter a number greater than 0');
-            clearForm()
+            clearForm();
         } else {
             addBlock();
         }
