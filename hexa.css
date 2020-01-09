@@ -28,9 +28,11 @@ body {
 
 .page__blocks {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
     width: 80%;
     grid-gap: 20px;
+    margin-top: 20px;
+    transition: all 5s;
 
 }
 
@@ -66,8 +68,15 @@ body {
 .page__control {
     display: block;
     outline: none;
-    border: 1px solid #f9f9f9;
+    border: 1px solid #989494;
     font-family: inherit;
     padding: 10px;
+    width: 100%;
+}
+
+.error-message {
+    background-color: red;
+    color: #ffffff;
+    display: none;
     width: 100%;
 }
