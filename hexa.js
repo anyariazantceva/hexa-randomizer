@@ -48,20 +48,26 @@ window.addEventListener('load', () => {
         return formInput.value = '';
     };
 
-
-
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
+    const formValidation = () => {
         let activeInput = document.querySelector('.page__control').value;
-
-        if ( activeInput <= 0) {
+        console.log(activeInput.match(/[a-z][A-Z]/));
+        if (activeInput <= 0) {
             console.log(activeInput);
             alert('You should enter a number greater than 0');
             clearForm();
+        } else if (activeInput > 100) {
+            alert('You should enter a number greater than 100');
+            clearForm();
+            blocksList.textContent = '';
         } else {
             addBlock();
         }
 
+    };
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        formValidation();
     });
 
 });
