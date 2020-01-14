@@ -36,6 +36,7 @@ body {
 .page__block--text {
     font-size: 14px;
 }
+
 .page__title--main {
     font-size: 24px;
 }
@@ -95,4 +96,10 @@ body {
     color: #ffffff;
     display: none;
     width: 100%;
+}
+
+.color-textarea {
+    position: absolute;
+    left: -9999px;
+    z-index: -1;
 }

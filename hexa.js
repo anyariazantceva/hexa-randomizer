@@ -20,20 +20,23 @@ window.addEventListener('load', () => {
     };
 
     const createBlock = (num) => {
-        for(let i = 0; i<num; i++) {
+        for (let i = 0; i < num; i++) {
             let block = createElement('div', 'page__block-item');
             let text = createElement('div', 'page__block--text');
             let buttonCopy = createElement('button', 'btn-copy');
+            let colorText = document.createElement('textarea');
+            let colorBlock = randomHexaNumberGenerator();
             buttonCopy.classList.add('page__btn');
             buttonCopy.textContent = 'Copy';
-            let colorBlock = randomHexaNumberGenerator();
             block.style.backgroundColor = colorBlock;
             text.textContent = colorBlock;
-            block.append(text);
-            block.append(buttonCopy);
+            colorText.classList.add('color-textarea');
+            colorText.setAttribute('name', 'hexColor');
+            colorText.textContent = colorBlock;
+            block.append(colorText, text, buttonCopy);
             blocksList.append(block);
-        }
 
+        }
     };
 
     const getFormValue = () => {
@@ -102,25 +105,12 @@ window.addEventListener('load', () => {
     function copyText () {
         let buttons = document.querySelectorAll('.btn-copy');
         buttons.forEach((btn) => {
-            btn.addEventListener('click', (event) => {
-                let color = document.querySelector('.page__block--text');
-                let range = document.createRange();
-                range.selectNode(color);
-                window.getSelection().addRange(range);
-
-                try {
-                    let successful = document.execCommand('copy');
-                    let msg = successful ? 'successful' : 'unsuccessful';
-                    console.log('Copy email command was ' + msg);
-                    window.getSelection().removeAllRanges();
-                } catch(err) {
-                    console.log('Oops, unable to copy');
-                }
-
-                window.getSelection().removeAllRanges();
-            })
+            btn.addEventListener('click', (e) => {
+                let copyColor = e.target.parentNode.firstChild;
+                copyColor.select();
+                document.execCommand('Copy');
+            });
         })
     }
-
 
 });
