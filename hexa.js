@@ -13,13 +13,24 @@ window.addEventListener('load', () => {
         return color;
     };
 
+    const createElement = (name, className ) => {
+        let el = document.createElement(name);
+        el.classList.add(className);
+        return el
+    };
+
     const createBlock = (num) => {
         for(let i = 0; i<num; i++) {
-            let block = document.createElement('div');
-            block.classList.add('page__block-item');
+            let block = createElement('div', 'page__block-item');
+            let text = createElement('div', 'page__block--text');
+            let buttonCopy = createElement('button', 'btn-copy');
+            buttonCopy.classList.add('page__btn');
+            buttonCopy.textContent = 'Copy';
             let colorBlock = randomHexaNumberGenerator();
             block.style.backgroundColor = colorBlock;
-            block.textContent = colorBlock;
+            text.textContent = colorBlock;
+            block.append(text);
+            block.append(buttonCopy);
             blocksList.append(block);
         }
 
@@ -61,13 +72,55 @@ window.addEventListener('load', () => {
             blocksList.textContent = '';
         } else {
             addBlock();
+            startTimer();
+            copyText();
         }
 
     };
+
+    function startTimer () {
+        let timer = setInterval(function () {
+            let blocks = document.querySelectorAll('.page__block-item');
+            blocks.forEach((block) => {
+                let color = randomHexaNumberGenerator();
+                block.style.backgroundColor = color;
+                block.firstChild.textContent = color;
+
+            })
+        }, 2000);
+        let btnStart = document.querySelector('.btn-run');
+        btnStart.addEventListener('click', () => {
+            clearInterval(timer);
+        });
+    }
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         formValidation();
     });
+
+    function copyText () {
+        let buttons = document.querySelectorAll('.btn-copy');
+        buttons.forEach((btn) => {
+            btn.addEventListener('click', (event) => {
+                let color = document.querySelector('.page__block--text');
+                let range = document.createRange();
+                range.selectNode(color);
+                window.getSelection().addRange(range);
+
+                try {
+                    let successful = document.execCommand('copy');
+                    let msg = successful ? 'successful' : 'unsuccessful';
+                    console.log('Copy email command was ' + msg);
+                    window.getSelection().removeAllRanges();
+                } catch(err) {
+                    console.log('Oops, unable to copy');
+                }
+
+                window.getSelection().removeAllRanges();
+            })
+        })
+    }
+
 
 });
