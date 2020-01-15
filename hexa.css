@@ -35,6 +35,7 @@ body {
 
 .page__block--text {
     font-size: 14px;
+    color: lightgray;
 }
 
 .page__title--main {

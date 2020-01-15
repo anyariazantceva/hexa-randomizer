@@ -108,7 +108,7 @@ window.addEventListener('load', () => {
             btn.addEventListener('click', (e) => {
                 let copyColor = e.target.parentNode.firstChild;
                 copyColor.select();
-                document.execCommand('Copy');
+                document.execCommand('Copy') ? alert('Text copied') : alert('Text was not copied');
             });
         })
     }
