@@ -69,6 +69,7 @@ window.addEventListener('load', () => {
             console.log(activeInput);
             alert('You should enter a number greater than 0');
             clearForm();
+            blocksList.textContent = '';
         } else if (activeInput > 100) {
             alert('You should enter a number greater than 100');
             clearForm();
@@ -87,10 +88,11 @@ window.addEventListener('load', () => {
             blocks.forEach((block) => {
                 let color = randomHexaNumberGenerator();
                 block.style.backgroundColor = color;
+                block.firstChild.textContent = color;
                 block.childNodes[1].textContent = color;
 
             })
-        }, 2000);
+        }, 3000);
         let btnStart = document.querySelector('.btn-run');
         btnStart.addEventListener('click', () => {
             clearInterval(timer);
