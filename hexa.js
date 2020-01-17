@@ -87,7 +87,7 @@ window.addEventListener('load', () => {
             blocks.forEach((block) => {
                 let color = randomHexaNumberGenerator();
                 block.style.backgroundColor = color;
-                block.firstChild.textContent = color;
+                block.childNodes[1].textContent = color;
 
             })
         }, 2000);
