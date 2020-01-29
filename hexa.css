@@ -17,7 +17,7 @@ body {
 }
 
 .page__title {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 700;
     margin-bottom: 10px;
 }
@@ -39,7 +39,9 @@ body {
 }
 
 .page__title--main {
-    font-size: 24px;
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 5px;
 }
 
 .page__blocks {
@@ -80,23 +82,26 @@ body {
     width: 50%;
 }
 .form__group {
-    width: 60%;
+    width: 75%;
 }
 
 .page__control {
     display: block;
+    border: none;
+    background-color: #efefef;
     outline: none;
-    border: 1px solid #989494;
     font-family: inherit;
     padding: 10px;
     width: 100%;
 }
 
-.error-message {
-    background-color: red;
-    color: #ffffff;
-    display: none;
+.error__message {
+    color: #ff3042;
+    display: block;
+    opacity: 0;
     width: 100%;
+    transition: opacity 1s;
+    margin-top: 1rem;
 }
 
 .color-textarea {

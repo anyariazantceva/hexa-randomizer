@@ -67,11 +67,11 @@ window.addEventListener('load', () => {
         console.log(activeInput.match(/[a-z][A-Z]/));
         if (activeInput <= 0) {
             console.log(activeInput);
-            alert('You should enter a number greater than 0');
+            showError();
             clearForm();
             blocksList.textContent = '';
         } else if (activeInput > 100) {
-            alert('You should enter a number greater than 100');
+            showError();
             clearForm();
             blocksList.textContent = '';
         } else {
@@ -113,6 +113,15 @@ window.addEventListener('load', () => {
                 document.execCommand('Copy') ? alert('Text copied') : alert('Text was not copied');
             });
         })
+    }
+
+    function showError () {
+        const errorMessage = document.querySelector('.error__message');
+        errorMessage.style.opacity = '1';
+        setInterval(() => {
+            errorMessage.style.opacity = '0';
+        }, 2000)
+
     }
 
 });

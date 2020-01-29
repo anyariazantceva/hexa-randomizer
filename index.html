@@ -11,18 +11,18 @@
 </head>
 <body>
     <div class="page__container">
-    <div class="page__title page__title--main">HEX Random Color Generator</div>
-    <div class="page__title"> Generate a random color of the block</div>
+    <div class="page__title page__title--main">Hexadecimal Random Color Generator</div>
+    <div class="page__title"> Generate random colors for the blocks</div>
     <form class="page__input">
         <div class="form__group">
-            <input type="number" class="page__control" placeholder="Enter a number greater than 0" required>
+            <input type="text" class="page__control" placeholder="Enter a number greater than 0" required>
         </div>
         <div class="page__block-action">
             <button class="page__btn btn btn-gen">Generate a color</button>
         </div>
     </form>
         <button class="page__btn btn btn-run">Stop</button>
-
+        <div class="error__message">Please enter a number between 0 and 100</div>
     <div class="page__blocks"></div>
 </div>
     <script src="hexa.js"></script>
